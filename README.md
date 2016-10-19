@@ -25,13 +25,24 @@ In your project's Gruntfile, add a section named `testcafe` to the data object p
 ```js
 grunt.initConfig({
     testcafe: {
-        test: {}
+        options: {
+            files: ['tests/*.test.js'],
+            browsers: ['chrome']
+        }
     }
 })
-
 ```
 
 ### Options
+
+#### files
+
+*Type*: `Array`
+
+*Default*: `[]`
+
+*Details*: [Configures the test runner to run tests from the specified files.](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/runner.html#src)
+
 #### browsers
 
 *Type*: `Array`
