@@ -1,6 +1,6 @@
 {
   "name": "grunt-testcafe",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Grunt testcafe plugin",
   "scripts": {
     "test": "grunt test"
