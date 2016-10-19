@@ -2,9 +2,8 @@
   "name": "grunt-testcafe",
   "version": "0.9.0",
   "description": "Grunt testcafe plugin",
-  "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
