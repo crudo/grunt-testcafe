@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/crudo/grunt-testcafe/issues"
   },
-  "homepage": "https://github.com/crudo/grunt-testcafe#readme"
+  "homepage": "https://github.com/crudo/grunt-testcafe#readme",
+  "devDependencies": {
+    "grunt": "0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
+  }
 }
