@@ -32,7 +32,6 @@ grunt.initConfig({
 ```
 
 ### Options
-<!---
 #### browsers
 
 *Type*: `Array`
@@ -112,7 +111,6 @@ Defines whether to enable the [quarantine mode](https://devexpress.github.io/tes
 *Details*: [Selector timeout](http://devexpress.github.io/testcafe/documentation/test-api/selecting-page-elements/selectors.html#selector-timeout)
 
 Specifies the amount of time, in milliseconds, within which [selectors](https://devexpress.github.io/testcafe/documentation/test-api/selecting-page-elements/selectors.html) make attempts to obtain a node to be returned.
--->
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
