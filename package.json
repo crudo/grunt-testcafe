@@ -11,10 +11,11 @@
     "url": "git+https://github.com/crudo/grunt-testcafe.git"
   },
   "keywords": [
+    "gruntplugin",
     "grunt",
+    "plugin",
     "testcafe",
-    "tests",
-    "plugin"
+    "tests"
   ],
   "author": "crudo",
   "license": "MIT",
