@@ -25,9 +25,11 @@ In your project's Gruntfile, add a section named `testcafe` to the data object p
 ```js
 grunt.initConfig({
     testcafe: {
-        options: {
-            files: ['tests/*.test.js'],
-            browsers: ['chrome']
+        test: {
+            options: {
+                files: ['tests/*.test.js'],
+                browsers: ['chrome']
+            }
         }
     }
 })
