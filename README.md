@@ -67,6 +67,14 @@ Configures the test runner to run tests in the specified browsers.
 
 Specifies the reporter.
 
+#### reporterOutputFile
+
+*Type*: `String`
+
+*Details*: [Reporters](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/runner.html#saving-the-report-to-a-file)
+
+Specifies the output file path for reporter.
+
 #### filter
 
 *Type*: `function(testName, fixtureName, fixturePath)`

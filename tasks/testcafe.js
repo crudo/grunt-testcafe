@@ -8,6 +8,7 @@
 
 'use strict';
 
+var fs = require('fs');
 var createTestCafe = require('testcafe');
 var _ = require('lodash');
 
@@ -25,7 +26,7 @@ var DEFAULT_OPTS = {
 module.exports = function(grunt) {
     grunt.registerMultiTask('testcafe', 'testcafe runner', function() {
         var done = this.async();
-        var opts = this.options();
+        var opts = this.options(DEFAULT_OPTS);
         var testcafe = null;
 
         if (typeof opts.files === 'string') {
@@ -42,12 +43,16 @@ module.exports = function(grunt) {
 
                 var runner = testcafe.createRunner();
 
+                if (opts.reporterOutputFile) {
+                    var stream = fs.createWriteStream(opts.reporterOutputFile);
+                }
+
                 return runner
                     .src(files)
                     .browsers(opts.browsers)
                     .filter(opts.filter)
                     .screenshots(opts.screenshotsPath, opts.takeScreenshotsOnFail)
-                    .reporter(opts.reporter)
+                    .reporter(opts.reporter, stream)
                     .run(opts);
             })
             .then(function(failed) {
