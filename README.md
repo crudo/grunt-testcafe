@@ -133,6 +133,36 @@ Defines whether to enable the [quarantine mode](https://devexpress.github.io/tes
 
 Specifies the amount of time, in milliseconds, within which [selectors](https://devexpress.github.io/testcafe/documentation/test-api/selecting-page-elements/selectors.html) make attempts to obtain a node to be returned.
 
+#### assertionTimeout
+
+*Type*: `Number`
+
+*Default*: `3000`
+
+*Details*: [Assertion options](http://devexpress.github.io/testcafe/documentation/test-api/assertions/#assertion-options)
+
+Specifies the amount of time, in milliseconds, within which TestCafe makes attempts to successfully execute an assertion if a selector property or a client function was passed as an actual value.
+ 
+#### speed
+
+*Type*: `Number`
+
+*Default*: `1`
+
+*Details* : [Speed factor](http://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#--speed-factor)
+
+Specifies the speed of test execution. Should be a number between `1` (the fastest) and `0.01` (the slowest).
+
+#### startApp
+
+*Type*: `Object { command, initDelay  }`
+
+*Default*: `{ initDelay: 1000 }`
+
+*Details* : [startApp](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/runner.html#startapp)
+
+Specifies a shell command that will be executed before running tests. Use it to launch or deploy the application that will be tested. 
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 

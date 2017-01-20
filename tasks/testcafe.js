@@ -11,6 +11,7 @@
 var fs = require('fs');
 var createTestCafe = require('testcafe');
 var _ = require('lodash');
+var testCafeRunner = null;
 
 var DEFAULT_OPTS = {
     browsers: [],
@@ -20,7 +21,10 @@ var DEFAULT_OPTS = {
     reporter: 'spec',
     skipJsErrors: false,
     quarantineMode: false,
-    selectorTimeout: 10000
+    selectorTimeout: 10000,
+    assertionTimeout: 3000,
+    speed: 1,
+    startApp: { initDelay: 1000 }
 };
 
 module.exports = function(grunt) {
@@ -41,13 +45,19 @@ module.exports = function(grunt) {
             .then(function(tc) {
                 testcafe = tc;
 
-                var runner = testcafe.createRunner();
+                testCafeRunner = testcafe.createRunner();
 
+                if (opts.startApp.command)
+                    return testCafeRunner.startApp(opts.startApp.command, opts.startApp.initDelay);
+
+                return null;
+            })
+            .then(function() {
                 if (opts.reporterOutputFile) {
                     var stream = fs.createWriteStream(opts.reporterOutputFile);
                 }
 
-                return runner
+                return testCafeRunner
                     .src(files)
                     .browsers(opts.browsers)
                     .filter(opts.filter)
