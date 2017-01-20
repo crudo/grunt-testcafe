@@ -1,4 +1,6 @@
-# grunt-testcafe
+# grunt-testcafe 
+
+[![Build Status](https://travis-ci.org/crudo/grunt-testcafe.svg?branch=master)](https://travis-ci.org/crudo/grunt-testcafe)
 
 >Tests runner
 
