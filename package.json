@@ -32,6 +32,6 @@
   },
   "peerDependencies": {
     "grunt": ">=0.4.0",
-    "testcafe": "~0.12.0"
+    "testcafe": "~0.12.1"
   }
 }
