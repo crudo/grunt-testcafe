@@ -31,7 +31,7 @@
     "testcafe-reporter-xunit": "2.1.0"
   },
   "peerDependencies": {
-    "grunt": ">=0.4.0",
+    "grunt": "0.4.0 - 1",
     "testcafe": "~0.12.0"
   }
 }
