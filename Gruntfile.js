@@ -55,7 +55,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-http-server');
     grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('test', ['http-server', 'testcafe', 'clean:test']);
+    grunt.registerTask('test-locally', ['http-server', 'testcafe', 'clean:test']);
+    grunt.registerTask('test-ci', ['http-server', 'testcafe:form', 'clean:test']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['test']);

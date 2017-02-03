@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             })
             .then(function(failed) {
                 if (failed > 0){
-                    grunt.log.warn(failed + ' test(s) failed.');
+                    throw new Error(err);
                 } else {
                     done();
                 }
