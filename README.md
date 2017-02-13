@@ -1,13 +1,11 @@
-# grunt-testcafe 
+# grunt-testcafe
 
 [![Build Status](https://travis-ci.org/crudo/grunt-testcafe.svg?branch=master)](https://travis-ci.org/crudo/grunt-testcafe)
 
 >Tests runner
 
 ## Getting Started
-This plugin requires Grunt `~0.4`.
-
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+This plugin requires Grunt `0.4 - 1`.
 
 ```shell
 npm install grunt-testcafe --save-dev
@@ -31,6 +29,29 @@ grunt.initConfig({
             options: {
                 files: ['tests/*.test.js'],
                 browsers: ['chrome']
+            }
+        }
+    }
+})
+```
+
+#### Advanced example:
+
+```js
+grunt.initConfig({
+    testcafe: {
+        test: {
+            options: {
+                files: ['tests/*.test.js'],
+                browsers: ['firefox', 'chrome'],
+                takeScreenshotsOnFail: true,
+                screenshotsPath: 'tests/screenshots',
+                filter: (testName, fixtureName, fixturePath) => {
+                    const testNameFilter = testName.match(new RegExp(grunt.option('testName')));
+                    const fixtureNameFilter = fixtureName.match(new RegExp(grunt.option('fixtureName')));
+                    const fixturePathFilter = fixturePath.match(new RegExp(grunt.option('fixturePath')));
+                    return testNameFilter && fixtureNameFilter && fixturePathFilter;
+                }
             }
         }
     }
@@ -144,7 +165,7 @@ Specifies the amount of time, in milliseconds, within which [selectors](https://
 *Details*: [Assertion options](http://devexpress.github.io/testcafe/documentation/test-api/assertions/#assertion-options)
 
 Specifies the amount of time, in milliseconds, within which TestCafe makes attempts to successfully execute an assertion if a selector property or a client function was passed as an actual value.
- 
+
 #### speed
 
 *Type*: `Number`
@@ -163,10 +184,7 @@ Specifies the speed of test execution. Should be a number between `1` (the faste
 
 *Details* : [startApp](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/runner.html#startapp)
 
-Specifies a shell command that will be executed before running tests. Use it to launch or deploy the application that will be tested. 
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Specifies a shell command that will be executed before running tests. Use it to launch or deploy the application that will be tested.
 
 ## License
 

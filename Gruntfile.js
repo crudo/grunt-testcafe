@@ -8,9 +8,34 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = (grunt) => {
     // Project configuration.
     grunt.initConfig({
+        clean: {
+            test: ['xunit.xml']
+        },
+
+        eslint: {
+            all: [
+                'Gruntfile.js',
+                'tests/*.js',
+                'tasks/**/*.js'
+            ],
+            options: {
+                configFile: '.eslintrc'
+            }
+        },
+
+        'http-server': {
+            dev: {
+                port: 3113,
+                host: 'localhost',
+                showDir: true,
+                runInBackground: true,
+                autoIndex: true
+            }
+        },
+
         // Configuration to be run (and then tested).
         testcafe: {
             all: {
@@ -33,31 +58,19 @@ module.exports = function(grunt) {
                     browsers: ['chrome']
                 }
             }
-        },
-
-        'http-server': {
-            'dev': {
-                port: 3113,
-                host: 'localhost',
-                showDir: true,
-                runInBackground: true,
-                autoIndex: true
-            }
-        },
-
-        clean: {
-            test: ['xunit.xml']
         }
     });
 
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
+
     grunt.loadNpmTasks('grunt-http-server');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('gruntify-eslint');
 
     grunt.registerTask('test-locally', ['http-server', 'testcafe', 'clean:test']);
     grunt.registerTask('test-ci', ['http-server', 'testcafe:form', 'clean:test']);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask('default', ['eslint', 'test-locally']);
 };
