@@ -8,53 +8,55 @@
 
 'use strict';
 
-var fs = require('fs');
-var createTestCafe = require('testcafe');
-var _ = require('lodash');
-var testCafeRunner = null;
+const fs = require('fs');
+const createTestCafe = require('testcafe');
 
-var DEFAULT_OPTS = {
+const DEFAULT_OPTS = {
+    assertionTimeout: 3000,
     browsers: [],
     filter: null,
-    screenshotsPath: null,
-    takeScreenshotsOnFail: false,
-    reporter: 'spec',
-    skipJsErrors: false,
     quarantineMode: false,
+    reporter: 'spec',
+    screenshotsPath: null,
     selectorTimeout: 10000,
-    assertionTimeout: 3000,
+    skipJsErrors: false,
     speed: 1,
-    startApp: { initDelay: 1000 }
+    startApp: { initDelay: 1000 },
+    takeScreenshotsOnFail: false
 };
 
-module.exports = function(grunt) {
-    grunt.registerMultiTask('testcafe', 'testcafe runner', function() {
-        var done = this.async();
-        var opts = this.options(DEFAULT_OPTS);
-        var testcafe = null;
+module.exports = (grunt) => {
+    grunt.registerMultiTask('testcafe', 'testcafe runner', () => {
+        const currentTask = grunt.task.current;
+        const done = currentTask.async();
+        const opts = currentTask.options(DEFAULT_OPTS);
+
+        let stream;
+        let testCafe;
+        let testCafeRunner;
 
         if (typeof opts.files === 'string') {
             opts.files = [opts.files];
         }
 
-        var files = grunt.file.expand(opts.files).map(function(fileName) {
+        const files = grunt.file.expand(opts.files).map((fileName) => {
             return fileName;
         });
 
         createTestCafe()
-            .then(function(tc) {
-                testcafe = tc;
+            .then((tc) => {
+                testCafe = tc;
+                testCafeRunner = testCafe.createRunner();
 
-                testCafeRunner = testcafe.createRunner();
-
-                if (opts.startApp.command)
+                if (opts.startApp.command) {
                     return testCafeRunner.startApp(opts.startApp.command, opts.startApp.initDelay);
+                }
 
                 return null;
             })
-            .then(function() {
+            .then(() => {
                 if (opts.reporterOutputFile) {
-                    var stream = fs.createWriteStream(opts.reporterOutputFile);
+                    stream = fs.createWriteStream(opts.reporterOutputFile);
                 }
 
                 return testCafeRunner
@@ -65,20 +67,18 @@ module.exports = function(grunt) {
                     .reporter(opts.reporter, stream)
                     .run(opts);
             })
-            .then(function(failed) {
-                if (failed > 0){
-                    throw new Error(err);
+            .then((failed) => {
+                if (failed > 0) {
+                    throw new Error(failed);
                 } else {
                     done();
                 }
             })
-            .catch(function(err) {
+            .catch((err) => {
                 grunt.fail.warn(err.message);
             })
-            .then(function() {
-                if (testcafe){
-                    return testcafe.close();
-                }
+            .then(() => {
+                return testCafe && testCafe.close();
             })
             .then(done);
     });
