@@ -33,7 +33,7 @@
     "grunt-contrib-clean": "1.0.0",
     "grunt-http-server": "2.0.0",
     "gruntify-eslint": "3.1.0",
-    "testcafe": "0.12.1",
+    "testcafe": "0.13.0",
     "testcafe-reporter-xunit": "2.1.0"
   },
   "peerDependencies": {
