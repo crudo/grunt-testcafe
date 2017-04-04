@@ -9,6 +9,8 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
+const mkdirp = require('mkdirp');
 const createTestCafe = require('testcafe');
 
 const DEFAULT_OPTS = {
@@ -56,6 +58,7 @@ module.exports = (grunt) => {
             })
             .then(() => {
                 if (opts.reporterOutputFile) {
+                    mkdirp.sync(path.dirname(opts.reporterOutputFile));
                     stream = fs.createWriteStream(opts.reporterOutputFile);
                 }
 
