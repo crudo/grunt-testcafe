@@ -24,7 +24,8 @@ const DEFAULT_OPTS = {
     skipJsErrors: false,
     speed: 1,
     startApp: { initDelay: 1000 },
-    takeScreenshotsOnFail: false
+    takeScreenshotsOnFail: false,
+    proxyHost: null
 };
 
 module.exports = (grunt) => {
@@ -63,6 +64,7 @@ module.exports = (grunt) => {
                 }
 
                 return testCafeRunner
+                    .useProxy(opts.proxyHost)
                     .src(files)
                     .browsers(opts.browsers)
                     .filter(opts.filter)

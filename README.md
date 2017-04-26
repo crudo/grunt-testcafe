@@ -178,13 +178,23 @@ Specifies the speed of test execution. Should be a number between `1` (the faste
 
 #### startApp
 
-*Type*: `Object { command, initDelay  }`
+*Type*: `Object { command, initDelay }`
 
 *Default*: `{ initDelay: 1000 }`
 
 *Details* : [startApp](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/runner.html#startapp)
 
 Specifies a shell command that will be executed before running tests. Use it to launch or deploy the application that will be tested.
+
+#### proxyHost
+
+*Type*: `String`
+
+*Default*: `null`
+
+*Details* : [proxy](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#--proxy-host)
+
+Specifies the proxy server used in your local network to access the Internet. You can also specify authentication credentials with the proxy host.
 
 ## License
 
