@@ -41,6 +41,7 @@
     "testcafe": "< 0.17.0"
   },
   "dependencies": {
-    "mkdirp": "0.5.1"
+    "mkdirp": "0.5.1",
+    "tmp": "0.0.31"
   }
 }
