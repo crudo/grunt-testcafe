@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/crudo/grunt-testcafe#readme",
   "devDependencies": {
-    "eslint": "3.15.0",
+    "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
@@ -33,14 +33,15 @@
     "grunt-contrib-clean": "1.1.0",
     "grunt-http-server": "2.0.0",
     "gruntify-eslint": "3.1.0",
-    "testcafe": "0.15.0",
+    "testcafe": "0.16.0",
     "testcafe-reporter-xunit": "2.1.0"
   },
   "peerDependencies": {
     "grunt": "0.4.0 - 1",
-    "testcafe": "~0.15.0"
+    "testcafe": "< 0.17.0"
   },
   "dependencies": {
-    "mkdirp": "0.5.1"
+    "mkdirp": "0.5.1",
+    "tmp": "0.0.31"
   }
 }

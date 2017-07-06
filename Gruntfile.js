@@ -40,7 +40,7 @@ module.exports = (grunt) => {
         testcafe: {
             all: {
                 options: {
-                    files: ['tests/*.js'],
+                    files: ['tests/*.{js,ts}'],
                     browsers: ['chrome']
                 }
             },
@@ -48,7 +48,10 @@ module.exports = (grunt) => {
                 options: {
                     reporter: 'xunit',
                     reporterOutputFile: 'xunit.xml',
-                    files: ['tests/form.test.js'],
+                    files: [
+                        'tests/form.test.js',
+                        'tests/type.test.ts'
+                    ],
                     browsers: ['chrome']
                 }
             },
