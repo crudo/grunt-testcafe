@@ -1,5 +1,7 @@
 # grunt-testcafe
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/crudo/grunt-testcafe.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/crudo/grunt-testcafe.svg?branch=master)](https://travis-ci.org/crudo/grunt-testcafe)
 
 >Tests runner
