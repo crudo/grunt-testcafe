@@ -33,12 +33,12 @@
     "grunt-contrib-clean": "1.1.0",
     "grunt-http-server": "2.0.0",
     "gruntify-eslint": "3.1.0",
-    "testcafe": "0.16.0",
+    "testcafe": "0.18.2",
     "testcafe-reporter-xunit": "2.1.0"
   },
   "peerDependencies": {
     "grunt": "0.4.0 - 1",
-    "testcafe": "< 0.17.0"
+    "testcafe": "< 0.19.0"
   },
   "dependencies": {
     "mkdirp": "0.5.1",
