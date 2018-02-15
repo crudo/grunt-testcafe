@@ -16,6 +16,7 @@ const createTestCafe = require('testcafe');
 const DEFAULT_OPTS = {
     assertionTimeout: 3000,
     browsers: [],
+    concurrency: 1,
     filter: null,
     quarantineMode: false,
     reporter: 'spec',
@@ -67,6 +68,7 @@ module.exports = (grunt) => {
                     .useProxy(opts.proxyHost)
                     .src(files)
                     .browsers(opts.browsers)
+                    .concurrency(opts.concurrency)
                     .filter(opts.filter)
                     .screenshots(opts.screenshotsPath, opts.takeScreenshotsOnFail)
                     .reporter(opts.reporter, stream)
