@@ -76,9 +76,18 @@ grunt.initConfig({
 
 *Details*: [Specifying Browsers for Test Task](https://devexpress.github.io/testcafe/documentation/using-testcafe/common-concepts/browser-support.html#specifying-browsers-for-test-task)
 
+Configures the test runner to run tests in the specified browsers.
+
 *Required*
 
-Configures the test runner to run tests in the specified browsers.
+#### concurrency
+
+*Type*: `Number`
+
+*Default*: `1`
+
+*Details*: [Specifies that tests should run concurrently.](http://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#-c-n---concurrency-n)
+
 
 #### reporter
 
