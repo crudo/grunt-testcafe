@@ -98,23 +98,16 @@ _Default_: `1`
 
 _Details_: [Specifies that tests should run concurrently.](http://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#-c-n---concurrency-n)
 
-#### reporter
+#### reporters
 
-_Type_: `String`
+_Type_: `Array`
 
-_Default_: `spec`
+_Default_: `['spec']`
 
 _Details_: [Reporters](https://devexpress.github.io/testcafe/documentation/using-testcafe/common-concepts/reporters.html)
 
-Specifies the reporter.
-
-#### reporterOutputFile
-
-_Type_: `String`
-
-_Details_: [Reporters](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/runner.html#saving-the-report-to-a-file)
-
-Specifies the output file path for reporter.
+Specifies the reporter. Output file can be passed along with reporter name by colon (:) separator. Example   
+`reporters: ['json:report.json', 'xunit:report.xml']`
 
 #### filter
 
