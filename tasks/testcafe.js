@@ -19,7 +19,7 @@ const DEFAULT_OPTS = {
     concurrency: 1,
     filter: null,
     quarantineMode: false,
-    reporter: 'spec',
+    reporters: ['spec'],
     screenshotsPath: null,
     screenshotPathPattern: null,
     selectorTimeout: 10000,
@@ -36,7 +36,6 @@ module.exports = grunt => {
         const done = currentTask.async();
         const opts = currentTask.options(DEFAULT_OPTS);
 
-        let stream;
         let testCafe;
         let testCafeRunner;
 
@@ -60,12 +59,7 @@ module.exports = grunt => {
                 return null;
             })
             .then(() => {
-                if (opts.reporterOutputFile) {
-                    mkdirp.sync(path.dirname(opts.reporterOutputFile));
-                    stream = fs.createWriteStream(opts.reporterOutputFile);
-                }
-
-                return testCafeRunner
+                let tcrunner = testCafeRunner
                     .useProxy(opts.proxyHost)
                     .src(files)
                     .browsers(opts.browsers)
@@ -76,8 +70,23 @@ module.exports = grunt => {
                         opts.takeScreenshotsOnFail,
                         opts.screenshotPathPattern
                     )
-                    .reporter(opts.reporter, stream)
-                    .run(opts);
+
+                // reporters
+                opts.reporters.forEach(r => {
+                    const reporter = r.split(":");
+                    
+                    if(reporter.length > 1) { // stream report to a file.
+                        let filePath = reporter[1];
+                        mkdirp.sync(path.dirname(filePath));
+                        let stream = fs.createWriteStream(filePath);
+
+                        tcrunner.reporter(reporter[0], stream);
+                    } else {
+                        tcrunner.reporter(reporter[0]);
+                    }
+                });
+
+                return tcrunner.run(opts);
             })
             .then(failed => {
                 if (failed > 0) {

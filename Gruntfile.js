@@ -45,8 +45,7 @@ module.exports = (grunt) => {
             },
             form: {
                 options: {
-                    reporter: 'xunit',
-                    reporterOutputFile: 'xunit.xml',
+                    reporters: ['xunit:xunit.xml'],
                     files: [
                         'tests/form.test.js',
                         'tests/type.test.ts'
